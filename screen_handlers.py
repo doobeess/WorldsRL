@@ -46,11 +46,11 @@ class MainGameScreenHandler(ScreenHandler):
             return 0
         
         is_timeless = action.perform(engine, engine.player, engine.message_log)
-        if not is_timeless:
-            engine.update_fov()
-            return 2
+        if is_timeless:
+            return 1
         
-        return 1
+        engine.update_fov()
+        return 2
     
     def ev_keydown(self, event: tcod.event.KeyDown):
 
@@ -128,8 +128,9 @@ class MultipleChoiceScreenHandler(ScreenHandler):
         else:
             self.select(engine)
             engine.delete_current_screen_handler()
+            return 2
 
-        return 2
+        return 1
     
     def ev_keydown(self, event: tcod.event.KeyDown):
         key = event.sym
