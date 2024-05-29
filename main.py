@@ -8,7 +8,8 @@ from player import Player
 
 from item import Item
 
-from creature_types import Goblin
+
+from test_world.procgen import procgen
 
 from input_handlers import MainGameScreenHandler
 
@@ -40,13 +41,8 @@ def main() -> None:
         root_console = tcod.console.Console(screen_width, screen_height, order="F")
         
         player = Player(5,5, 20)
-        goblin = Goblin(10,10)
-        potion = Item(15, 15, "!", (0, 255, 0), name="Green potion")
-        potion2 = Item(15, 17, "!", (0, 0, 255), name="Blue potion")
 
-        creatures = [goblin]
-        items = [potion, potion2]
-        game_map = GameMap(map_width, map_height, creatures=creatures, items=items)
+        game_map = procgen(map_width, map_height)
 
         screen_handler = MainGameScreenHandler()
         

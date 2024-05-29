@@ -161,6 +161,8 @@ class MultipleChoiceScreenHandler(ScreenHandler):
             height=len(self.choices)
             +2 # Fit all the choices. TODO: Add scrolling functionality.
             +2, # Add room for title. 
+            fg=color.WHITE,
+            bg=color.BLACK,
         )
         console.print(x+1, y+1, self.title)
         for i, choice in enumerate(self.choices):

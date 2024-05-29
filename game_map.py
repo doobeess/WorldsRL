@@ -2,18 +2,15 @@ import numpy as np  # type: ignore
 from tcod.console import Console
 
 import tile_types
-
+from test_world.terrain_types import long_grass, short_grass
 
 class GameMap:
-    def __init__(self, width: int, height: int, creatures=[], items=[]):
+    def __init__(self, width: int, height: int, tiles=None, creatures=[], items=[]):
         self.width, self.height = width, height
-        self.tiles = np.full((width, height), fill_value=tile_types.floor, order="F")
+        self.tiles = tiles
 
         self.visible = np.full((width, height), fill_value=False, order="F")  # Tiles the player can currently see
         self.explored = np.full((width, height), fill_value=False, order="F")  # Tiles the player has seen before
-
-        self.tiles[30:33, 22] = tile_types.wall
-        # Pathing will be added later.
 
         self.creatures = creatures
         self.items = items

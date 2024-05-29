@@ -63,6 +63,31 @@ class MovementAction(DirectionalAction):
         entity.move(self.dx, self.dy)
 
 
+def construct_attack_sentence(attacker, target, player):
+    text = ""
+
+    if attacker == player:
+        text += "You hit "
+    else:
+        text += "The " + attacker.name + " hits "
+
+    if target == player:
+        text += "you"
+    else:
+        text += "the " + target.name
+
+    text += "!"
+
+    if target == player:
+        text_color = (255, 0, 0)
+    elif attacker == player:
+        text_color = (54, 131, 255)
+    else:
+        text_color = (255, 255, 255)
+
+    return text, text_color
+
+
 class MeleeAction(DirectionalAction):
     def perform(self, engine: Engine, entity: Entity, message_log: MessageLog) -> None:
         dest_x = entity.x + self.dx
@@ -73,12 +98,12 @@ class MeleeAction(DirectionalAction):
         if not target:
             target = engine.player
 
-        if target != engine.player:
-            target.hp -= 1
-            message_log.log(f"You hit the {target.name}!", (54, 131, 255))
-        else:
-            engine.player.hp -= 1
-            message_log.log(f"The {entity.name} hits you!", (255,0,0))
+        attacker = entity
+        
+        target.hp -= 1
+        message_log.log(
+            *construct_attack_sentence(attacker, target, engine.player)
+        )
 
 class WaitAction(Action):
     def __init__(self):
