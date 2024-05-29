@@ -121,6 +121,9 @@ class PickUpAction(Action):
             item = engine.game_map.get_item_at(x,y)
             engine.player.pick_up(item, engine.game_map)
             message_log.log(f"You pick up the {item.name}.", (0,255,0))
+        else:
+            message_log.log("There are no items here.")
+            return True
 
 class DropAction(Action):
     def perform(self, engine: Engine, entity: Entity, message_log: MessageLog):
