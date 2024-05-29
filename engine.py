@@ -6,7 +6,7 @@ import tcod
 
 from typing import Set, Iterable, Any
 
-from game_map import GameMap
+from game_map import GameMap2D
 
 from player import Player
 from screen_handlers import MainGameScreenHandler, ViewInventoryScreenHandler, DropScreenHandler
@@ -23,7 +23,7 @@ MENU_TYPES = {
 class Engine:
     def __init__(self, *,
             screen_handler: MainGameScreenHandler, 
-            game_map: GameMap, 
+            game_map: GameMap2D, 
             player: Player,
             message_log: MessageLog,
             context: Context,
@@ -81,6 +81,9 @@ class Engine:
         for screen_handler in self.screen_handler_list:
             screen_handler.on_render(console, self)
 
+        self.context.present(console)
+        console.clear()
+
     def update_fov(self) -> None:
         """Recompute the visible area based on the players point of view."""
         self.game_map.visible[:] = compute_fov(
@@ -93,10 +96,6 @@ class Engine:
 
     def main_loop(self, console):
         while True:
-
-            self.context.present(console)
-            console.clear()
-
             turn_code = 0
             while not turn_code > 0:
                 events = tcod.event.wait()

@@ -2,7 +2,7 @@ import tcod
 
 from engine import Engine
 
-from game_map import GameMap
+from game_map import GameMap2D
 
 from player import Player
 
@@ -40,7 +40,7 @@ def main() -> None:
     ) as context:
         root_console = tcod.console.Console(screen_width, screen_height, order="F")
         
-        player = Player(5,5, 20)
+        player = Player(30,20, 20)
 
         game_map = procgen(map_width, map_height)
 

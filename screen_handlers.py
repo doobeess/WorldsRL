@@ -91,7 +91,7 @@ class MainGameScreenHandler(ScreenHandler):
         return action
 
     def on_render(self, console, engine):
-        engine.game_map.render(console)
+        engine.game_map.render(console, engine)
 
         console.print(engine.player.x, engine.player.y, engine.player.char, engine.player.color)
         console.print(engine.map_width+1, 3, f"HP: {engine.player.hp}", (255,0,0))

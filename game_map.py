@@ -4,7 +4,7 @@ from tcod.console import Console
 import tile_types
 from test_world.terrain_types import long_grass, short_grass
 
-class GameMap:
+class GameMap2D:
     def __init__(self, width: int, height: int, tiles=None, creatures=[], items=[]):
         self.width, self.height = width, height
         self.tiles = tiles
@@ -19,8 +19,8 @@ class GameMap:
         """Return True if x and y are inside of the bounds of this map."""
         return 0 <= x < self.width and 0 <= y < self.height
 
-    def render(self, console: Console) -> None:
-        console.tiles_rgb[0:self.width, 0:self.height] = np.select(
+    def render(self, console: Console, engine) -> None:
+        console.rgb[0:self.width, 0:self.height] = np.select(
             condlist=[self.visible, self.explored],
             choicelist=[self.tiles["light"], self.tiles["dark"]],
             default=tile_types.SHROUD

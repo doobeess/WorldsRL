@@ -1,4 +1,4 @@
-from game_map import GameMap
+from game_map import GameMap2D
 
 from .terrain_types import long_grass, short_grass, tree
 from .item_types import Stick, Rock
@@ -13,7 +13,7 @@ def procgen(world_width, world_height):
     items_list = []
 
 
-    working_game_map = GameMap(
+    working_game_map = GameMap2D(
         width=world_width, height=world_height,
         tiles=np.array(
             [
