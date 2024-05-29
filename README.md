@@ -1,2 +1,2 @@
-# WorldsRL
-An in-progress roguelike about inter-dimensional travel.
+# basic_rogue
+A partially complete traditional roguelike engine.
