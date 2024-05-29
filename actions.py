@@ -56,9 +56,9 @@ class MovementAction(DirectionalAction):
         dest_y = entity.y + self.dy
 
         if not engine.game_map.in_bounds(dest_x, dest_y):
-            return  # Destination is out of bounds.
+            return True # Destination is out of bounds.
         if not engine.game_map.tiles["walkable"][dest_x, dest_y]:
-            return  # Destination is blocked by a tile.
+            return True # Destination is blocked by a tile.
         
         entity.move(self.dx, self.dy)
 
@@ -124,12 +124,15 @@ class PickUpAction(Action):
 
 class DropAction(Action):
     def perform(self, engine: Engine, entity: Entity, message_log: MessageLog):
-        engine.add_menu('drop')
+        if engine.player.has_items():
+            engine.add_menu('drop')
+        else:
+            engine.message_log.log('You are carrying nothing.')
         return 1
 
 class ViewInventoryAction(Action):
     def perform(self, engine: Engine, entity: Entity, message_log: MessageLog) -> None:
-        if len(engine.player.inventory) > 0:
+        if engine.player.has_items():
             engine.add_menu('inventory')
         else:
             engine.message_log.log('You are carrying nothing.')

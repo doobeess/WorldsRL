@@ -11,7 +11,7 @@ from item import Item
 
 from test_world.procgen import procgen
 
-from input_handlers import MainGameScreenHandler
+from screen_handlers import MainGameScreenHandler
 
 from message_log import MessageLog
 

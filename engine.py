@@ -9,7 +9,7 @@ from typing import Set, Iterable, Any
 from game_map import GameMap
 
 from player import Player
-from input_handlers import MainGameScreenHandler, ViewInventoryScreenHandler, DropScreenHandler
+from screen_handlers import MainGameScreenHandler, ViewInventoryScreenHandler, DropScreenHandler
 
 from message_log import MessageLog
 
@@ -86,7 +86,7 @@ class Engine:
         self.game_map.visible[:] = compute_fov(
             self.game_map.tiles["transparent"],
             (self.player.x, self.player.y),
-            radius=6,
+            radius=20,
         )
         # If a tile is "visible" it should be added to "explored".
         self.game_map.explored |= self.game_map.visible

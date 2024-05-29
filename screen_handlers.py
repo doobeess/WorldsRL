@@ -168,7 +168,7 @@ class MultipleChoiceScreenHandler(ScreenHandler):
         for i, choice in enumerate(self.choices):
             fg = color.WHITE
             bg = color.BLACK
-            if choice == self.get_pointed():
+            if i==self.pointer-1:
                 fg = color.BLACK
                 bg = color.WHITE
             console.print(x+1, y+i+3, str(i+1) + " - " + choice, fg, bg)
