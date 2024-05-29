@@ -10,7 +10,7 @@ import numpy as np
 
 
 def procgen(world_width, world_height):
-    terrain_array = [short_grass, short_grass, short_grass, short_grass, short_grass, long_grass, tree]
+    terrain_array = [short_grass]*7 + [long_grass, tree]
     items_list = []
 
 
