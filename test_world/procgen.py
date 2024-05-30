@@ -7,8 +7,7 @@ from .creature_types import Deer
 import numpy as np
 
 
-
-def procgen(world_width, world_height):
+def wilderness_procgen(world_width, world_height):
     terrain_array = [short_grass]*10 + [long_grass, tree]
     items_list = []
 
@@ -40,3 +39,7 @@ def procgen(world_width, world_height):
 
     return working_game_map
     
+
+
+def procgen(world_width, world_height):
+    return wilderness_procgen(world_width, world_height)

@@ -1,7 +1,7 @@
 from game_map_2d import GameMap2D
 
-from typing import Tuple
+from typing import List
 
 class World:
-    def __init__(self, levels: Tuple[GameMap2D]):
+    def __init__(self, levels: List[GameMap2D]):
         self.levels = levels
