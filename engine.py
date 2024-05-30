@@ -6,7 +6,7 @@ import tcod
 
 from typing import Set, Iterable, Any
 
-from game_map import GameMap2D
+from game_map_2d import GameMap2D
 
 from player import Player
 from screen_handlers import MainGameScreenHandler, ViewInventoryScreenHandler, DropScreenHandler

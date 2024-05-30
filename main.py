@@ -2,11 +2,7 @@ import tcod
 
 from engine import Engine
 
-from game_map import GameMap2D
-
 from player import Player
-
-from item import Item
 
 
 from test_world.procgen import procgen

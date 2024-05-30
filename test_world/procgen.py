@@ -1,4 +1,4 @@
-from game_map import GameMap2D
+from game_map_2d import GameMap2D
 
 from .terrain_types import long_grass, short_grass, tree
 from .item_types import Stick, Rock
